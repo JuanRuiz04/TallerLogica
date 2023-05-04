@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pizzería Pepitos</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container mt-5">
+		<h1 class="mb-4">Pizzería Pepitos:
+            La pizzería Pepitos requiere un algoritmo que permita informarle a los usuarios si reciben o no un premio por parte del negocio, se tienen las siguientes validaciones:
+            Si es un niño menor a 10 años, debe ir a reclamar un jugo.
+            Si es una persona mayor de edad (18 años) debe ir a reclamar una cerveza. 
+            Y si es una mujer, debe reclamar adicionalmente una porción de pizza Hawaiana.
+            O si es un hombre debe reclamar adicionalmente una porción de pizza tres carnes.
+            Si no cumple ninguna de las condiciones, se le debe informar que desafortunadamente, no recibe ningún premio.
+            </h1>
+		<div class="form-group">
+			<label for="edad">Edad:</label>
+			<input type="number" class="form-control" id="edad">
+		</div>
+		<div class="form-group">
+			<label for="genero">Género:</label>
+			<select class="form-control" id="genero">
+				<option value="hombre">Hombre</option>
+				<option value="mujer">Mujer</option>
+			</select>
+		</div>
+		<button class="btn btn-primary" onclick="validarPremio()">Validar premio</button>
+		<div id="resultado"></div>
+	</div>
+	<script>
+		function validarPremio() {
+			let edad = parseInt(document.getElementById("edad").value);
+			let genero = document.getElementById("genero").value;
+			let premio = "";
+
+			if (edad < 10) {
+				premio = "un jugo";
+			} else if (edad >= 18) {
+				premio = "una cerveza";
+			} else {
+				document.getElementById("resultado").innerHTML = "Desafortunadamente, no recibe ningún premio";
+				return;
+			}
+
+			if (genero == "mujer") {
+				premio += " y una porción de pizza Hawaiana";
+			} else {
+				premio += " y una porción de pizza tres carnes";
+			}
+
+			document.getElementById("resultado").innerHTML = "Felicidades, su premio es " + premio;
+		}
+	</script>
+</body>
+</html>
